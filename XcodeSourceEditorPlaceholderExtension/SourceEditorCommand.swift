@@ -16,7 +16,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         // Implement your command here, invoking the completion handler when done. Pass it nil on success, and an NSError on failure.
         
         if invocation.commandIdentifier == "xcodeSourceEditorPlaceholder.Insert" {
-            
+            processInsertCommand(with: invocation)
         }
         
         if invocation.commandIdentifier == "xcodeSourceEditorPlaceholder.Replace" {
@@ -26,46 +26,78 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 
                 let sourceCodeRange = selection as! XCSourceTextRange
                 
-                if sourceCodeRange.start.line == sourceCodeRange.end.line {
-                    var startLine = invocation.buffer.lines[sourceCodeRange.start.line] as! String
-                    
-                    let startIndex = startLine.index(startLine.startIndex, offsetBy: sourceCodeRange.start.column)
-                    let endIndex = startLine.index(startLine.startIndex, offsetBy: sourceCodeRange.end.column)
-                    
-                    let stringRange = Range<String.Index>(uncheckedBounds: (lower: startIndex, upper: endIndex))
-                    
-                    startLine.replaceSubrange(stringRange, with: "<# code #>")
-                    
-                    invocation.buffer.lines[sourceCodeRange.start.line] = startLine
+                if sourceCodeRange.start.column == sourceCodeRange.end.column && sourceCodeRange.start.line == sourceCodeRange.end.line {
+                    processInsertCommand(with: invocation)
                 } else {
-                    let startLine = invocation.buffer.lines[sourceCodeRange.start.line] as! String
-                    let endLine = invocation.buffer.lines[sourceCodeRange.end.line] as! String
-                    
-                    var editStart = startLine.startIndex
-                    var editEnd = startLine.index(startLine.startIndex, offsetBy: sourceCodeRange.start.column)
-                    
-                    let substringA = startLine.substring(with: Range<String.Index>(uncheckedBounds: (lower: editStart, upper: editEnd)))
-                    
-                    editStart = endLine.index(endLine.startIndex, offsetBy: sourceCodeRange.end.column)
-                    editEnd = endLine.endIndex
-                    
-                    let substringB = endLine.substring(with: Range<String.Index>(uncheckedBounds: (lower: editStart, upper: editEnd)))
-                    
-                    let replacementString = "\(substringA)<# code #>\(substringB)"
-                    
-                    invocation.buffer.lines.removeObjects(in: NSMakeRange(sourceCodeRange.start.line, sourceCodeRange.end.line - sourceCodeRange.start.line))
-                    invocation.buffer.lines.insert(replacementString, at: sourceCodeRange.start.line)
-                    
-                    if invocation.buffer.lines.count > sourceCodeRange.start.line + 1 {
-                        invocation.buffer.lines.removeObject(at: sourceCodeRange.start.line + 1)
-                    }
-                    
+                    processReplaceCommand(with: invocation)
                 }
                 
+                
             }
+            
         }
         
         completionHandler(nil)
+        
+    } // perform
+    
+    
+    func processInsertCommand(with invocation: XCSourceEditorCommandInvocation) {
+        let selection = invocation.buffer.selections[0]
+        
+        let sourceCodeRange = selection as! XCSourceTextRange
+        
+        var startLine = invocation.buffer.lines[sourceCodeRange.start.line] as! String
+        let startIndex = startLine.index(startLine.startIndex, offsetBy: sourceCodeRange.start.column)
+        
+        startLine.insert(contentsOf: "<# code #>".characters, at: startIndex)
+        
+        invocation.buffer.lines[sourceCodeRange.start.line] = startLine
     }
+    
+    
+    func processReplaceCommand(with invocation: XCSourceEditorCommandInvocation) {
+        let selection = invocation.buffer.selections[0]
+        
+        let sourceCodeRange = selection as! XCSourceTextRange
+        
+        if sourceCodeRange.start.line == sourceCodeRange.end.line {
+            var startLine = invocation.buffer.lines[sourceCodeRange.start.line] as! String
+            
+            let startIndex = startLine.index(startLine.startIndex, offsetBy: sourceCodeRange.start.column)
+            let endIndex = startLine.index(startLine.startIndex, offsetBy: sourceCodeRange.end.column)
+            
+            let stringRange = Range<String.Index>(uncheckedBounds: (lower: startIndex, upper: endIndex))
+            
+            startLine.replaceSubrange(stringRange, with: "<# code #>")
+            
+            invocation.buffer.lines[sourceCodeRange.start.line] = startLine
+        } else {
+            let startLine = invocation.buffer.lines[sourceCodeRange.start.line] as! String
+            let endLine = invocation.buffer.lines[sourceCodeRange.end.line] as! String
+            
+            var editStart = startLine.startIndex
+            var editEnd = startLine.index(startLine.startIndex, offsetBy: sourceCodeRange.start.column)
+            
+            let substringA = startLine.substring(with: Range<String.Index>(uncheckedBounds: (lower: editStart, upper: editEnd)))
+            
+            editStart = endLine.index(endLine.startIndex, offsetBy: sourceCodeRange.end.column)
+            editEnd = endLine.endIndex
+            
+            let substringB = endLine.substring(with: Range<String.Index>(uncheckedBounds: (lower: editStart, upper: editEnd)))
+            
+            let replacementString = "\(substringA)<# code #>\(substringB)"
+            
+            invocation.buffer.lines.removeObjects(in: NSMakeRange(sourceCodeRange.start.line, sourceCodeRange.end.line - sourceCodeRange.start.line))
+            invocation.buffer.lines.insert(replacementString, at: sourceCodeRange.start.line)
+            
+            if invocation.buffer.lines.count > sourceCodeRange.start.line + 1 {
+                invocation.buffer.lines.removeObject(at: sourceCodeRange.start.line + 1)
+            }
+            
+        }
+        
+    }
+
     
 }
