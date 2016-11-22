@@ -36,14 +36,6 @@
 					<key>XCSourceEditorCommandName</key>
 					<string>Insert placeholder</string>
 				</dict>
-				<dict>
-					<key>XCSourceEditorCommandClassName</key>
-					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
-					<key>XCSourceEditorCommandIdentifier</key>
-					<string>xcodeSourceEditorPlaceholder.Replace</string>
-					<key>XCSourceEditorCommandName</key>
-					<string>Replace with placeholder</string>
-				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>
 			<string>$(PRODUCT_MODULE_NAME).SourceEditorExtension</string>
