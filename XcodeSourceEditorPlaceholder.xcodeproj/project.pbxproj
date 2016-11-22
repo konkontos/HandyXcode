@@ -10,7 +10,35 @@
 		859FD6B11DE4495F00C0BDDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859FD6B01DE4495F00C0BDDA /* AppDelegate.swift */; };
 		859FD6B31DE4495F00C0BDDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 859FD6B21DE4495F00C0BDDA /* Assets.xcassets */; };
 		859FD6B61DE4495F00C0BDDA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 859FD6B41DE4495F00C0BDDA /* MainMenu.xib */; };
+		859FD6C41DE4496C00C0BDDA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 859FD6C31DE4496C00C0BDDA /* Cocoa.framework */; };
+		859FD6C91DE4496C00C0BDDA /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859FD6C81DE4496C00C0BDDA /* SourceEditorExtension.swift */; };
+		859FD6CB1DE4496C00C0BDDA /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859FD6CA1DE4496C00C0BDDA /* SourceEditorCommand.swift */; };
+		859FD6CF1DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 859FD6C11DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		859FD6CD1DE4496C00C0BDDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 859FD6A51DE4495F00C0BDDA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 859FD6C01DE4496C00C0BDDA;
+			remoteInfo = XcodeSourceEditorPlaceholderExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		859FD6D31DE4496C00C0BDDA /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				859FD6CF1DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		859FD6AD1DE4495F00C0BDDA /* XcodeSourceEditorPlaceholder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XcodeSourceEditorPlaceholder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -18,6 +46,13 @@
 		859FD6B21DE4495F00C0BDDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		859FD6B51DE4495F00C0BDDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		859FD6B71DE4495F00C0BDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		859FD6C11DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = XcodeSourceEditorPlaceholderExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		859FD6C31DE4496C00C0BDDA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		859FD6C71DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XcodeSourceEditorPlaceholderExtension.entitlements; sourceTree = "<group>"; };
+		859FD6C81DE4496C00C0BDDA /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
+		859FD6CA1DE4496C00C0BDDA /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
+		859FD6CC1DE4496C00C0BDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85F679801DE4600B009F2FBC /* XcodeSourceEditorPlaceholder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XcodeSourceEditorPlaceholder.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +63,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		859FD6BE1DE4496C00C0BDDA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				859FD6C41DE4496C00C0BDDA /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -35,6 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				859FD6AF1DE4495F00C0BDDA /* XcodeSourceEditorPlaceholder */,
+				859FD6C51DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension */,
+				859FD6C21DE4496C00C0BDDA /* Frameworks */,
 				859FD6AE1DE4495F00C0BDDA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				859FD6AD1DE4495F00C0BDDA /* XcodeSourceEditorPlaceholder.app */,
+				859FD6C11DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -50,12 +96,40 @@
 		859FD6AF1DE4495F00C0BDDA /* XcodeSourceEditorPlaceholder */ = {
 			isa = PBXGroup;
 			children = (
+				85F679801DE4600B009F2FBC /* XcodeSourceEditorPlaceholder.entitlements */,
 				859FD6B01DE4495F00C0BDDA /* AppDelegate.swift */,
 				859FD6B21DE4495F00C0BDDA /* Assets.xcassets */,
 				859FD6B41DE4495F00C0BDDA /* MainMenu.xib */,
 				859FD6B71DE4495F00C0BDDA /* Info.plist */,
 			);
 			path = XcodeSourceEditorPlaceholder;
+			sourceTree = "<group>";
+		};
+		859FD6C21DE4496C00C0BDDA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				859FD6C31DE4496C00C0BDDA /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		859FD6C51DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension */ = {
+			isa = PBXGroup;
+			children = (
+				859FD6C81DE4496C00C0BDDA /* SourceEditorExtension.swift */,
+				859FD6CA1DE4496C00C0BDDA /* SourceEditorCommand.swift */,
+				859FD6CC1DE4496C00C0BDDA /* Info.plist */,
+				859FD6C61DE4496C00C0BDDA /* Supporting Files */,
+			);
+			path = XcodeSourceEditorPlaceholderExtension;
+			sourceTree = "<group>";
+		};
+		859FD6C61DE4496C00C0BDDA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				859FD6C71DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.entitlements */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -68,15 +142,34 @@
 				859FD6A91DE4495F00C0BDDA /* Sources */,
 				859FD6AA1DE4495F00C0BDDA /* Frameworks */,
 				859FD6AB1DE4495F00C0BDDA /* Resources */,
+				859FD6D31DE4496C00C0BDDA /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				859FD6CE1DE4496C00C0BDDA /* PBXTargetDependency */,
 			);
 			name = XcodeSourceEditorPlaceholder;
 			productName = XcodeSourceEditorPlaceholder;
 			productReference = 859FD6AD1DE4495F00C0BDDA /* XcodeSourceEditorPlaceholder.app */;
 			productType = "com.apple.product-type.application";
+		};
+		859FD6C01DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 859FD6D01DE4496C00C0BDDA /* Build configuration list for PBXNativeTarget "XcodeSourceEditorPlaceholderExtension" */;
+			buildPhases = (
+				859FD6BD1DE4496C00C0BDDA /* Sources */,
+				859FD6BE1DE4496C00C0BDDA /* Frameworks */,
+				859FD6BF1DE4496C00C0BDDA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XcodeSourceEditorPlaceholderExtension;
+			productName = XcodeSourceEditorPlaceholderExtension;
+			productReference = 859FD6C11DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.appex */;
+			productType = "com.apple.product-type.xcode-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -89,6 +182,16 @@
 				ORGANIZATIONNAME = "K. K. Handmade Apps Ltd.";
 				TargetAttributes = {
 					859FD6AC1DE4495F00C0BDDA = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = V45DJ8ATAE;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
+					859FD6C01DE4496C00C0BDDA = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = V45DJ8ATAE;
 						ProvisioningStyle = Automatic;
@@ -109,6 +212,7 @@
 			projectRoot = "";
 			targets = (
 				859FD6AC1DE4495F00C0BDDA /* XcodeSourceEditorPlaceholder */,
+				859FD6C01DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -123,6 +227,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		859FD6BF1DE4496C00C0BDDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -134,7 +245,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		859FD6BD1DE4496C00C0BDDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				859FD6C91DE4496C00C0BDDA /* SourceEditorExtension.swift in Sources */,
+				859FD6CB1DE4496C00C0BDDA /* SourceEditorCommand.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		859FD6CE1DE4496C00C0BDDA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 859FD6C01DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension */;
+			targetProxy = 859FD6CD1DE4496C00C0BDDA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		859FD6B41DE4495F00C0BDDA /* MainMenu.xib */ = {
@@ -241,7 +369,10 @@
 		859FD6BB1DE4495F00C0BDDA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = XcodeSourceEditorPlaceholder/XcodeSourceEditorPlaceholder.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = V45DJ8ATAE;
 				INFOPLIST_FILE = XcodeSourceEditorPlaceholder/Info.plist;
@@ -255,13 +386,50 @@
 		859FD6BC1DE4495F00C0BDDA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = XcodeSourceEditorPlaceholder/XcodeSourceEditorPlaceholder.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = V45DJ8ATAE;
 				INFOPLIST_FILE = XcodeSourceEditorPlaceholder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tech.handmadeapps.XcodeSourceEditorPlaceholder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		859FD6D11DE4496C00C0BDDA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = XcodeSourceEditorPlaceholderExtension/XcodeSourceEditorPlaceholderExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = V45DJ8ATAE;
+				INFOPLIST_FILE = XcodeSourceEditorPlaceholderExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.handmadeapps.XcodeSourceEditorPlaceholder.XcodeSourceEditorPlaceholderExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		859FD6D21DE4496C00C0BDDA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = XcodeSourceEditorPlaceholderExtension/XcodeSourceEditorPlaceholderExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = V45DJ8ATAE;
+				INFOPLIST_FILE = XcodeSourceEditorPlaceholderExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.handmadeapps.XcodeSourceEditorPlaceholder.XcodeSourceEditorPlaceholderExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -285,6 +453,16 @@
 				859FD6BC1DE4495F00C0BDDA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		859FD6D01DE4496C00C0BDDA /* Build configuration list for PBXNativeTarget "XcodeSourceEditorPlaceholderExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				859FD6D11DE4496C00C0BDDA /* Debug */,
+				859FD6D21DE4496C00C0BDDA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
