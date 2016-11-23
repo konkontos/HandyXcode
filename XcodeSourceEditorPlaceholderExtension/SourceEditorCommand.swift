@@ -10,6 +10,13 @@ import Foundation
 import XcodeKit
 
 
+//add new selection
+/*
+let selectionPosition = XCSourceTextRange.init(start: XCSourceTextPosition.init(line: 0, column: 0), end: XCSourceTextPosition.init(line: 0, column: 0))
+self.buffer.selections.removeAllObjects()
+self.buffer.selections.insert(selectionPosition, at: 0)
+*/
+
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
@@ -17,13 +24,14 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         
         if invocation.commandIdentifier == "xcodeSourceEditorPlaceholder.Insert" {
             
-            for selection in invocation.buffer.selections {
-                let sourceCodeRange = selection as! XCSourceTextRange
+            
+            for i in 0 ..< invocation.buffer.selections.count {
+                let sourceCodeRange = invocation.buffer.selections[i] as! XCSourceTextRange
                 
                 if sourceCodeRange.start.column == sourceCodeRange.end.column && sourceCodeRange.start.line == sourceCodeRange.end.line {
-                    processInsertCommand(selection: sourceCodeRange, invocation: invocation)
+                    processInsertCommand(selection: sourceCodeRange, invocation: invocation, selectionIndex: i)
                 } else {
-                    processReplaceCommand(selection: sourceCodeRange, invocation: invocation)
+                    processReplaceCommand(selection: sourceCodeRange, invocation: invocation, selectionIndex: i)
                 }
             }
             
@@ -34,7 +42,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     } // perform
     
     
-    func processInsertCommand(selection: XCSourceTextRange, invocation: XCSourceEditorCommandInvocation) {
+    func processInsertCommand(selection: XCSourceTextRange, invocation: XCSourceEditorCommandInvocation, selectionIndex: Int) {
         let sourceCodeRange = selection
         
         var startLine = ""
@@ -54,7 +62,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     }
     
     
-    func processReplaceCommand(selection: XCSourceTextRange, invocation: XCSourceEditorCommandInvocation) {
+    func processReplaceCommand(selection: XCSourceTextRange, invocation: XCSourceEditorCommandInvocation, selectionIndex: Int) {
         let sourceCodeRange = selection
         
         if sourceCodeRange.start.line == sourceCodeRange.end.line {
@@ -68,6 +76,10 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             startLine.replaceSubrange(stringRange, with: "<# code #>")
             
             invocation.buffer.lines[sourceCodeRange.start.line] = startLine
+            
+            // Nullify selection
+            invocation.buffer.selections[selectionIndex] = XCSourceTextRange(start: sourceCodeRange.start,
+                                                                             end: sourceCodeRange.start)
         } else {
             // Get head of replacement
             let startLine = invocation.buffer.lines[sourceCodeRange.start.line] as! String
