@@ -97,23 +97,27 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             
             
             // Get tail of replacement
-            let endLine = invocation.buffer.lines[sourceCodeRange.end.line] as! String
-            
-            editStart = endLine.index(endLine.startIndex, offsetBy: sourceCodeRange.end.column)
-            editEnd = endLine.endIndex
-            
-            let substringB = endLine.substring(with: Range<String.Index>(uncheckedBounds: (lower: editStart, upper: editEnd)))
-            
-            // replace text
-            let replacementString = "\(substringA)<# code #>\(substringB)"
-            
-            invocation.buffer.lines.removeObjects(in: NSMakeRange(sourceCodeRange.start.line, sourceCodeRange.end.line - sourceCodeRange.start.line))
-            
-            if invocation.buffer.lines.count == 0 {
-                invocation.buffer.lines.add(replacementString)
+            var endLine = ""
+            if invocation.buffer.lines.count == sourceCodeRange.end.line {
+                invocation.buffer.lines.removeAllObjects()
+                
+                invocation.buffer.lines.add("<# code #>")
             } else {
+                endLine = invocation.buffer.lines[sourceCodeRange.end.line] as! String
+                
+                editStart = endLine.index(endLine.startIndex, offsetBy: sourceCodeRange.end.column)
+                editEnd = endLine.endIndex
+                
+                let substringB = endLine.substring(with: Range<String.Index>(uncheckedBounds: (lower: editStart, upper: editEnd)))
+                
+                // replace text
+                let replacementString = "\(substringA)<# code #>\(substringB)"
+                
+                invocation.buffer.lines.removeObjects(in: NSMakeRange(sourceCodeRange.start.line, sourceCodeRange.end.line - sourceCodeRange.start.line + 1))
+                
                 invocation.buffer.lines.insert(replacementString, at: sourceCodeRange.start.line)
             }
+            
             
             // Nullify selection
             invocation.buffer.selections[selectionIndex] = XCSourceTextRange(start: sourceCodeRange.start,
