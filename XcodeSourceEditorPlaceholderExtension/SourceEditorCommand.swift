@@ -107,14 +107,22 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             // replace text
             let replacementString = "\(substringA)<# code #>\(substringB)"
             
-            invocation.buffer.lines.removeObjects(in: NSMakeRange(sourceCodeRange.start.line, sourceCodeRange.end.line - sourceCodeRange.start.line + 1))
+            let endlineIndex = sourceCodeRange.end.line - sourceCodeRange.start.line
+            if endlineIndex >  invocation.buffer.lines.count {
+                invocation.buffer.lines.removeAllObjects()
+            } else {
+                invocation.buffer.lines.removeObjects(in: NSMakeRange(sourceCodeRange.start.line, endlineIndex))
+            }
             
             if invocation.buffer.lines.count == 0 {
                 invocation.buffer.lines.add(replacementString)
             } else {
                 invocation.buffer.lines.insert(replacementString, at: sourceCodeRange.start.line)
             }
-            
+         
+            // Nullify selection
+            invocation.buffer.selections[selectionIndex] = XCSourceTextRange(start: sourceCodeRange.start,
+                                                                             end: sourceCodeRange.start)
         }
         
     }
