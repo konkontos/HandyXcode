@@ -12,10 +12,10 @@ import XcodeKit
 
 //add new selection
 /*
-let selectionPosition = XCSourceTextRange.init(start: XCSourceTextPosition.init(line: 0, column: 0), end: XCSourceTextPosition.init(line: 0, column: 0))
-self.buffer.selections.removeAllObjects()
-self.buffer.selections.insert(selectionPosition, at: 0)
-*/
+ let selectionPosition = XCSourceTextRange.init(start: XCSourceTextPosition.init(line: 0, column: 0), end: XCSourceTextPosition.init(line: 0, column: 0))
+ self.buffer.selections.removeAllObjects()
+ self.buffer.selections.insert(selectionPosition, at: 0)
+ */
 
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
@@ -81,6 +81,12 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             invocation.buffer.selections[selectionIndex] = XCSourceTextRange(start: sourceCodeRange.start,
                                                                              end: sourceCodeRange.start)
         } else {
+            
+            if sourceCodeRange.end.line > invocation.buffer.lines.count - 1 {
+                sourceCodeRange.end.line = invocation.buffer.lines.count - 1
+                sourceCodeRange.end.column = (invocation.buffer.lines.lastObject as! String).characters.count - 1
+            }
+            
             // Get head of replacement
             let startLine = invocation.buffer.lines[sourceCodeRange.start.line] as! String
             
@@ -91,13 +97,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             
             
             // Get tail of replacement
-            var endLine = ""
-            
-            if sourceCodeRange.end.column == 0 {
-                endLine = invocation.buffer.lines[sourceCodeRange.end.line-1] as! String
-            } else {
-                endLine = invocation.buffer.lines[sourceCodeRange.end.line] as! String
-            }
+            let endLine = invocation.buffer.lines[sourceCodeRange.end.line] as! String
             
             editStart = endLine.index(endLine.startIndex, offsetBy: sourceCodeRange.end.column)
             editEnd = endLine.endIndex
@@ -107,25 +107,20 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             // replace text
             let replacementString = "\(substringA)<# code #>\(substringB)"
             
-            let endlineIndex = sourceCodeRange.end.line - sourceCodeRange.start.line
-            if endlineIndex >  invocation.buffer.lines.count {
-                invocation.buffer.lines.removeAllObjects()
-            } else {
-                invocation.buffer.lines.removeObjects(in: NSMakeRange(sourceCodeRange.start.line, endlineIndex))
-            }
+            invocation.buffer.lines.removeObjects(in: NSMakeRange(sourceCodeRange.start.line, sourceCodeRange.end.line - sourceCodeRange.start.line))
             
             if invocation.buffer.lines.count == 0 {
                 invocation.buffer.lines.add(replacementString)
             } else {
                 invocation.buffer.lines.insert(replacementString, at: sourceCodeRange.start.line)
             }
-         
+            
             // Nullify selection
             invocation.buffer.selections[selectionIndex] = XCSourceTextRange(start: sourceCodeRange.start,
                                                                              end: sourceCodeRange.start)
         }
         
     }
-
+    
     
 }
