@@ -9,14 +9,6 @@
 import Foundation
 import XcodeKit
 
-
-//add new selection
-/*
- let selectionPosition = XCSourceTextRange.init(start: XCSourceTextPosition.init(line: 0, column: 0), end: XCSourceTextPosition.init(line: 0, column: 0))
- self.buffer.selections.removeAllObjects()
- self.buffer.selections.insert(selectionPosition, at: 0)
- */
-
 class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
