@@ -13,7 +13,7 @@
 		859FD6C41DE4496C00C0BDDA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 859FD6C31DE4496C00C0BDDA /* Cocoa.framework */; };
 		859FD6C91DE4496C00C0BDDA /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859FD6C81DE4496C00C0BDDA /* SourceEditorExtension.swift */; };
 		859FD6CB1DE4496C00C0BDDA /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859FD6CA1DE4496C00C0BDDA /* SourceEditorCommand.swift */; };
-		859FD6CF1DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 859FD6C11DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		859FD6CF1DE4496C00C0BDDA /* HandyXCode.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 859FD6C11DE4496C00C0BDDA /* HandyXCode.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +33,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				859FD6CF1DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.appex in Embed App Extensions */,
+				859FD6CF1DE4496C00C0BDDA /* HandyXCode.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,12 +41,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		859FD6AD1DE4495F00C0BDDA /* XcodeSourceEditorPlaceholder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XcodeSourceEditorPlaceholder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		854888FF1DE70A5C004F73D7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		859FD6AD1DE4495F00C0BDDA /* HandyXCodeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandyXCodeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		859FD6B01DE4495F00C0BDDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		859FD6B21DE4495F00C0BDDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		859FD6B51DE4495F00C0BDDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		859FD6B71DE4495F00C0BDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		859FD6C11DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = XcodeSourceEditorPlaceholderExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		859FD6C11DE4496C00C0BDDA /* HandyXCode.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HandyXCode.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		859FD6C31DE4496C00C0BDDA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		859FD6C71DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XcodeSourceEditorPlaceholderExtension.entitlements; sourceTree = "<group>"; };
 		859FD6C81DE4496C00C0BDDA /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 		859FD6A41DE4495F00C0BDDA = {
 			isa = PBXGroup;
 			children = (
+				854888FF1DE70A5C004F73D7 /* README.md */,
 				859FD6AF1DE4495F00C0BDDA /* XcodeSourceEditorPlaceholder */,
 				859FD6C51DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension */,
 				859FD6C21DE4496C00C0BDDA /* Frameworks */,
@@ -87,8 +89,8 @@
 		859FD6AE1DE4495F00C0BDDA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				859FD6AD1DE4495F00C0BDDA /* XcodeSourceEditorPlaceholder.app */,
-				859FD6C11DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.appex */,
+				859FD6AD1DE4495F00C0BDDA /* HandyXCodeApp.app */,
+				859FD6C11DE4496C00C0BDDA /* HandyXCode.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -135,9 +137,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		859FD6AC1DE4495F00C0BDDA /* XcodeSourceEditorPlaceholder */ = {
+		859FD6AC1DE4495F00C0BDDA /* HandyXCodeApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 859FD6BA1DE4495F00C0BDDA /* Build configuration list for PBXNativeTarget "XcodeSourceEditorPlaceholder" */;
+			buildConfigurationList = 859FD6BA1DE4495F00C0BDDA /* Build configuration list for PBXNativeTarget "HandyXCodeApp" */;
 			buildPhases = (
 				859FD6A91DE4495F00C0BDDA /* Sources */,
 				859FD6AA1DE4495F00C0BDDA /* Frameworks */,
@@ -149,14 +151,14 @@
 			dependencies = (
 				859FD6CE1DE4496C00C0BDDA /* PBXTargetDependency */,
 			);
-			name = XcodeSourceEditorPlaceholder;
+			name = HandyXCodeApp;
 			productName = XcodeSourceEditorPlaceholder;
-			productReference = 859FD6AD1DE4495F00C0BDDA /* XcodeSourceEditorPlaceholder.app */;
+			productReference = 859FD6AD1DE4495F00C0BDDA /* HandyXCodeApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		859FD6C01DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension */ = {
+		859FD6C01DE4496C00C0BDDA /* HandyXCode */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 859FD6D01DE4496C00C0BDDA /* Build configuration list for PBXNativeTarget "XcodeSourceEditorPlaceholderExtension" */;
+			buildConfigurationList = 859FD6D01DE4496C00C0BDDA /* Build configuration list for PBXNativeTarget "HandyXCode" */;
 			buildPhases = (
 				859FD6BD1DE4496C00C0BDDA /* Sources */,
 				859FD6BE1DE4496C00C0BDDA /* Frameworks */,
@@ -166,9 +168,9 @@
 			);
 			dependencies = (
 			);
-			name = XcodeSourceEditorPlaceholderExtension;
+			name = HandyXCode;
 			productName = XcodeSourceEditorPlaceholderExtension;
-			productReference = 859FD6C11DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension.appex */;
+			productReference = 859FD6C11DE4496C00C0BDDA /* HandyXCode.appex */;
 			productType = "com.apple.product-type.xcode-extension";
 		};
 /* End PBXNativeTarget section */
@@ -198,7 +200,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 859FD6A81DE4495F00C0BDDA /* Build configuration list for PBXProject "XcodeSourceEditorPlaceholder" */;
+			buildConfigurationList = 859FD6A81DE4495F00C0BDDA /* Build configuration list for PBXProject "HandyXcode" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -211,8 +213,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				859FD6AC1DE4495F00C0BDDA /* XcodeSourceEditorPlaceholder */,
-				859FD6C01DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension */,
+				859FD6AC1DE4495F00C0BDDA /* HandyXCodeApp */,
+				859FD6C01DE4496C00C0BDDA /* HandyXCode */,
 			);
 		};
 /* End PBXProject section */
@@ -259,7 +261,7 @@
 /* Begin PBXTargetDependency section */
 		859FD6CE1DE4496C00C0BDDA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 859FD6C01DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension */;
+			target = 859FD6C01DE4496C00C0BDDA /* HandyXCode */;
 			targetProxy = 859FD6CD1DE4496C00C0BDDA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -437,7 +439,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		859FD6A81DE4495F00C0BDDA /* Build configuration list for PBXProject "XcodeSourceEditorPlaceholder" */ = {
+		859FD6A81DE4495F00C0BDDA /* Build configuration list for PBXProject "HandyXcode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				859FD6B81DE4495F00C0BDDA /* Debug */,
@@ -446,7 +448,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		859FD6BA1DE4495F00C0BDDA /* Build configuration list for PBXNativeTarget "XcodeSourceEditorPlaceholder" */ = {
+		859FD6BA1DE4495F00C0BDDA /* Build configuration list for PBXNativeTarget "HandyXCodeApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				859FD6BB1DE4495F00C0BDDA /* Debug */,
@@ -455,7 +457,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		859FD6D01DE4496C00C0BDDA /* Build configuration list for PBXNativeTarget "XcodeSourceEditorPlaceholderExtension" */ = {
+		859FD6D01DE4496C00C0BDDA /* Build configuration list for PBXNativeTarget "HandyXCode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				859FD6D11DE4496C00C0BDDA /* Debug */,
