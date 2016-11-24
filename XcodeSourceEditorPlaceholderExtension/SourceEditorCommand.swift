@@ -29,10 +29,53 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             
         }
         
-        completionHandler(nil)
         
-    } // perform
+        if invocation.commandIdentifier == "xcodeSourceEditorPlaceholder.MultiLineComment" {
+            
+            for i in 0 ..< invocation.buffer.selections.count {
+                let sourceCodeRange = invocation.buffer.selections[i] as! XCSourceTextRange
+                
+                if (sourceCodeRange.start.column == sourceCodeRange.end.column && sourceCodeRange.start.line == sourceCodeRange.end.line) == false {
+                    processMultiLineCommentCommand(selection: sourceCodeRange, invocation: invocation, selectionIndex: i)
+                }
+                
+            }
+            
+            
+        }
+        
+        completionHandler(nil)
+    }
     
+    
+    func processMultiLineCommentCommand(selection: XCSourceTextRange, invocation: XCSourceEditorCommandInvocation, selectionIndex: Int) {
+        let sourceCodeRange = selection
+
+        // Adjust range for select-all command
+        if sourceCodeRange.end.line > invocation.buffer.lines.count - 1 {
+            sourceCodeRange.end.line = invocation.buffer.lines.count - 1
+            sourceCodeRange.end.column = (invocation.buffer.lines.lastObject as! String).characters.count - 1
+        }
+        
+        var commentedTextLines = [String]()
+        
+        commentedTextLines.append("/*")
+        
+        for lineIndex in sourceCodeRange.start.line ... sourceCodeRange.end.line {
+            commentedTextLines.append(invocation.buffer.lines[lineIndex] as! String)
+        }
+        
+        commentedTextLines.append("*/")
+        
+        invocation.buffer.lines.removeObjects(in: NSMakeRange(sourceCodeRange.start.line, sourceCodeRange.end.line - sourceCodeRange.start.line + 1))
+        
+        
+        invocation.buffer.lines.insert(commentedTextLines, at: IndexSet(integersIn: (sourceCodeRange.start.line ..< (sourceCodeRange.start.line + commentedTextLines.count))))
+        
+        // Nullify selection
+        invocation.buffer.selections[selectionIndex] = XCSourceTextRange(start: sourceCodeRange.start,
+                                                                         end: sourceCodeRange.start)
+    }
     
     func processInsertCommand(selection: XCSourceTextRange, invocation: XCSourceEditorCommandInvocation, selectionIndex: Int) {
         let sourceCodeRange = selection
@@ -74,6 +117,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                                                                              end: sourceCodeRange.start)
         } else {
             
+            // Adjust range for select-all command
             if sourceCodeRange.end.line > invocation.buffer.lines.count - 1 {
                 sourceCodeRange.end.line = invocation.buffer.lines.count - 1
                 sourceCodeRange.end.column = (invocation.buffer.lines.lastObject as! String).characters.count - 1

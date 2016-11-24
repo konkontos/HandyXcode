@@ -36,6 +36,14 @@
 					<key>XCSourceEditorCommandName</key>
 					<string>Insert placeholder</string>
 				</dict>
+				<dict>
+					<key>XCSourceEditorCommandClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
+					<key>XCSourceEditorCommandIdentifier</key>
+					<string>xcodeSourceEditorPlaceholder.MultiLineComment</string>
+					<key>XCSourceEditorCommandName</key>
+					<string>Multi-line comment selection</string>
+				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>
 			<string>$(PRODUCT_MODULE_NAME).SourceEditorExtension</string>
