@@ -14,7 +14,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
     func perform(with invocation: XCSourceEditorCommandInvocation, completionHandler: @escaping (Error?) -> Void ) -> Void {
         // Implement your command here, invoking the completion handler when done. Pass it nil on success, and an NSError on failure.
         
-        if invocation.commandIdentifier == "xcodeSourceEditorPlaceholder.Insert" {
+        if invocation.commandIdentifier == "handyXcode.Insert" {
             
             
             for i in 0 ..< invocation.buffer.selections.count {
@@ -30,7 +30,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         }
         
         
-        if invocation.commandIdentifier == "xcodeSourceEditorPlaceholder.MultiLineComment" {
+        if invocation.commandIdentifier == "handyXcode.Insert.MultiLineComment" {
             
             for i in 0 ..< invocation.buffer.selections.count {
                 let sourceCodeRange = invocation.buffer.selections[i] as! XCSourceTextRange
@@ -54,7 +54,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         // Adjust range for select-all command
         if sourceCodeRange.end.line > invocation.buffer.lines.count - 1 {
             sourceCodeRange.end.line = invocation.buffer.lines.count - 1
-            sourceCodeRange.end.column = (invocation.buffer.lines.lastObject as! String).characters.count - 1
+            sourceCodeRange.end.column = (invocation.buffer.lines.lastObject as! String).count - 1
         }
         
         var commentedTextLines = [String]()
@@ -89,7 +89,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             
             let startIndex = startLine.index(startLine.startIndex, offsetBy: sourceCodeRange.start.column)
             
-            startLine.insert(contentsOf: "<# code #>".characters, at: startIndex)
+            startLine.insert(contentsOf: "<# code #>", at: startIndex)
             
             invocation.buffer.lines[sourceCodeRange.start.line] = startLine
         }
@@ -120,7 +120,7 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             // Adjust range for select-all command
             if sourceCodeRange.end.line > invocation.buffer.lines.count - 1 {
                 sourceCodeRange.end.line = invocation.buffer.lines.count - 1
-                sourceCodeRange.end.column = (invocation.buffer.lines.lastObject as! String).characters.count - 1
+                sourceCodeRange.end.column = (invocation.buffer.lines.lastObject as! String).count - 1
             }
             
             // Get head of replacement
@@ -129,8 +129,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             var editStart = startLine.startIndex
             var editEnd = startLine.index(startLine.startIndex, offsetBy: sourceCodeRange.start.column)
             
-            let substringA = startLine.substring(with: Range<String.Index>(uncheckedBounds: (lower: editStart, upper: editEnd)))
-            
+//            let substringA = startLine.substring(with: Range<String.Index>(uncheckedBounds: (lower: editStart, upper: editEnd)))
+            let substringA = startLine[editStart..<editEnd]
             
             // Get tail of replacement
             var endLine = ""
@@ -144,7 +144,8 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
                 editStart = endLine.index(endLine.startIndex, offsetBy: sourceCodeRange.end.column)
                 editEnd = endLine.endIndex
                 
-                let substringB = endLine.substring(with: Range<String.Index>(uncheckedBounds: (lower: editStart, upper: editEnd)))
+//                let substringB = endLine.substring(with: Range<String.Index>(uncheckedBounds: (lower: editStart, upper: editEnd)))
+                let substringB = endLine[editStart..<editEnd]
                 
                 // replace text
                 let replacementString = "\(substringA)<# code #>\(substringB)"

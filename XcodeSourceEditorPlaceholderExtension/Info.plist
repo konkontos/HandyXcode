@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>XPC!</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSMinimumSystemVersion</key>
@@ -32,17 +32,17 @@
 					<key>XCSourceEditorCommandClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
 					<key>XCSourceEditorCommandIdentifier</key>
-					<string>xcodeSourceEditorPlaceholder.Insert</string>
+					<string>handyXcode.Insert</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Insert placeholder</string>
+					<string>Insert code placeholder</string>
 				</dict>
 				<dict>
 					<key>XCSourceEditorCommandClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).SourceEditorCommand</string>
 					<key>XCSourceEditorCommandIdentifier</key>
-					<string>xcodeSourceEditorPlaceholder.MultiLineComment</string>
+					<string>handyXcode.Insert.MultiLineComment</string>
 					<key>XCSourceEditorCommandName</key>
-					<string>Multi-line comment selection</string>
+					<string>Multi-line-comment selection</string>
 				</dict>
 			</array>
 			<key>XCSourceEditorExtensionPrincipalClass</key>

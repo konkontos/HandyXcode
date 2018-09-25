@@ -1,6 +1,6 @@
 # HandyXcode
 
-Sample Xcode source editor extension to add a few commands I find useful in my everyday work.
+Xcode source editor extension, adding commands I find useful in my everyday work.
 
-* **Insert placeholder**: adds an `<# code #>` placeholder
-* **Multi-line comment**: uses `/# ... */` instead of having Xcode use multiple single line comments
+* **Insert code placeholder**: adds a `<# code #>` placeholder
+* **Multi-line comment selection**: applies a multiline comment block ( `/# ... */`) to the current text selection
