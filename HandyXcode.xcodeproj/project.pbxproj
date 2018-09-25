@@ -53,6 +53,7 @@
 		859FD6C81DE4496C00C0BDDA /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
 		859FD6CA1DE4496C00C0BDDA /* SourceEditorCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorCommand.swift; sourceTree = "<group>"; };
 		859FD6CC1DE4496C00C0BDDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85F46DCD215A2A6400C7A689 /* HandyXcode Icon.svg */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "HandyXcode Icon.svg"; sourceTree = "<group>"; };
 		85F679801DE4600B009F2FBC /* XcodeSourceEditorPlaceholder.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XcodeSourceEditorPlaceholder.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +79,7 @@
 		859FD6A41DE4495F00C0BDDA = {
 			isa = PBXGroup;
 			children = (
+				85F46DCD215A2A6400C7A689 /* HandyXcode Icon.svg */,
 				854888FF1DE70A5C004F73D7 /* README.md */,
 				859FD6AF1DE4495F00C0BDDA /* XcodeSourceEditorPlaceholder */,
 				859FD6C51DE4496C00C0BDDA /* XcodeSourceEditorPlaceholderExtension */,
