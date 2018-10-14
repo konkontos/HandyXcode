@@ -57,18 +57,34 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             sourceCodeRange.end.column = (invocation.buffer.lines.lastObject as! String).count - 1
         }
         
+        
         var commentedTextLines = [String]()
         
-        commentedTextLines.append("/*")
+        // Check for existing comment block
         
-        for lineIndex in sourceCodeRange.start.line ... sourceCodeRange.end.line {
-            commentedTextLines.append(invocation.buffer.lines[lineIndex] as! String)
+        var checkingCharSet = CharacterSet.controlCharacters
+        checkingCharSet = checkingCharSet.union(CharacterSet.whitespacesAndNewlines)
+        
+        let firstLine = (invocation.buffer.lines[sourceCodeRange.start.line] as! String).trimmingCharacters(in: checkingCharSet)
+        let endingLine = (invocation.buffer.lines[sourceCodeRange.end.line] as! String).trimmingCharacters(in: checkingCharSet)
+        
+        if firstLine.starts(with: "/*") && endingLine.starts(with: "*/") {
+            
+            for lineIndex in sourceCodeRange.start.line.advanced(by: 1) ... sourceCodeRange.end.line.advanced(by: -1) {
+                commentedTextLines.append(invocation.buffer.lines[lineIndex] as! String)
+            }
+            
+        } else {
+            commentedTextLines.append("/*")
+            
+            for lineIndex in sourceCodeRange.start.line ... sourceCodeRange.end.line {
+                commentedTextLines.append(invocation.buffer.lines[lineIndex] as! String)
+            }
+            
+            commentedTextLines.append("*/")
         }
         
-        commentedTextLines.append("*/")
-        
         invocation.buffer.lines.removeObjects(in: NSMakeRange(sourceCodeRange.start.line, sourceCodeRange.end.line - sourceCodeRange.start.line + 1))
-        
         
         invocation.buffer.lines.insert(commentedTextLines, at: IndexSet(integersIn: (sourceCodeRange.start.line ..< (sourceCodeRange.start.line + commentedTextLines.count))))
         
