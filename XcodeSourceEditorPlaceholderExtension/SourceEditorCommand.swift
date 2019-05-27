@@ -44,9 +44,33 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             
         }
         
+        
+        if invocation.commandIdentifier == "handyXcode.Insert.JSONLint" {
+            jsonLint(invocation: invocation)
+        }
+
+        
         completionHandler(nil)
     }
     
+    func jsonLint(invocation: XCSourceEditorCommandInvocation) {
+        let jsonStr = invocation.buffer.completeBuffer
+        
+        if let jsonData = jsonStr.data(using: .utf8) {
+            
+            do {
+                _ = try JSONSerialization.jsonObject(with: jsonData, options: .allowFragments)
+            } catch (let error as NSError) {
+                
+                var errorStr = error.debugDescription
+                errorStr += "\n\n"
+                
+                invocation.buffer.lines.insert(errorStr, at: 0)
+            }
+            
+        }
+        
+    }
     
     func processMultiLineCommentCommand(selection: XCSourceTextRange, invocation: XCSourceEditorCommandInvocation, selectionIndex: Int) {
         let sourceCodeRange = selection
@@ -111,7 +135,6 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
         }
         
     }
-    
     
     func processReplaceCommand(selection: XCSourceTextRange, invocation: XCSourceEditorCommandInvocation, selectionIndex: Int) {
         let sourceCodeRange = selection
