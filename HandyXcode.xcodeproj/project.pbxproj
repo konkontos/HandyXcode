@@ -14,6 +14,8 @@
 		859FD6C91DE4496C00C0BDDA /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859FD6C81DE4496C00C0BDDA /* SourceEditorExtension.swift */; };
 		859FD6CB1DE4496C00C0BDDA /* SourceEditorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859FD6CA1DE4496C00C0BDDA /* SourceEditorCommand.swift */; };
 		859FD6CF1DE4496C00C0BDDA /* HandyXCode.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 859FD6C11DE4496C00C0BDDA /* HandyXCode.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		85C4881C255FC2E3000E69EF /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 859715BD255EB1C10015A800 /* XcodeKit.framework */; };
+		85C4881D255FC2E3000E69EF /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 859715BD255EB1C10015A800 /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,10 +40,22 @@
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		85C4881E255FC2E3000E69EF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				85C4881D255FC2E3000E69EF /* XcodeKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		854888FF1DE70A5C004F73D7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		859715BD255EB1C10015A800 /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
 		859FD6AD1DE4495F00C0BDDA /* HandyXCodeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandyXCodeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		859FD6B01DE4495F00C0BDDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		859FD6B21DE4495F00C0BDDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +84,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				859FD6C41DE4496C00C0BDDA /* Cocoa.framework in Frameworks */,
+				85C4881C255FC2E3000E69EF /* XcodeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +127,7 @@
 		859FD6C21DE4496C00C0BDDA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				859715BD255EB1C10015A800 /* XcodeKit.framework */,
 				859FD6C31DE4496C00C0BDDA /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -165,6 +181,7 @@
 				859FD6BD1DE4496C00C0BDDA /* Sources */,
 				859FD6BE1DE4496C00C0BDDA /* Frameworks */,
 				859FD6BF1DE4496C00C0BDDA /* Resources */,
+				85C4881E255FC2E3000E69EF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -182,7 +199,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "K. K. Handmade Apps Ltd.";
 				TargetAttributes = {
 					859FD6AC1DE4495F00C0BDDA = {
@@ -307,6 +324,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -332,7 +350,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -366,6 +384,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -385,7 +404,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -402,8 +421,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = XcodeSourceEditorPlaceholder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.handmadeapps.HandyXcode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -421,8 +443,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = XcodeSourceEditorPlaceholder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.handmadeapps.HandyXcode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -437,8 +462,11 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = V45DJ8ATAE;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = XcodeSourceEditorPlaceholderExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.handmadeapps.HandyXcode.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -453,8 +481,11 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = V45DJ8ATAE;
+				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = XcodeSourceEditorPlaceholderExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.handmadeapps.HandyXcode.Extension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
